@@ -1,5 +1,8 @@
+using CMS.DAL.MongoDb;
+using CMS.Database.CMSDb;
 using CMS.Database.UserDb;
-using CMS.JWT1.Extensions;
+using CMS.JWT;
+using CMS.Models.DbModels;
 using CMS.Policy1.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +20,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime;
 using System.Threading.Tasks;
 
 namespace CMS
@@ -33,17 +37,22 @@ namespace CMS
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.RegisterServices();
+            services.RegisterJwtServices();
 
-            services.AddJwtBearerAuthentication();
-            services.AddRolesAndPolicyAuthorization();
+           // services.AddJwtBearerAuthentication();
+            //services.AddRolesAndPolicyAuthorization();
             services.AddControllers();
             services.Configure<UserDbSettings>(
                 Configuration.GetSection("UserDbSettings"));
+            services.Configure<DatabaseSettings>(
+               Configuration.GetSection("CMSDatabaseSettings"));
+           // DbInitialization.getInstance().DbConnection();
 
 
             services.AddSingleton<IAuthorizationHandler, ShouldBeAnAuthorizedHandler>();
             services.AddSingleton<UserService>();
+            services.AddSingleton<CMSService>();
+            services.AddSingleton<DbInitialization>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CMS", Version = "v1" });

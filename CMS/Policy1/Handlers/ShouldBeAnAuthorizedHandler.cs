@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System;
 using System.Security.Claims;
 using System.Linq;
+using CMS.Policy1.Requirements;
 
 namespace CMS.Policy1.Handlers
 {
