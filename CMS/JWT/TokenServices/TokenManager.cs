@@ -5,11 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace CMS.JWT.TokenServices
 {
     public class TokenManager : ITokenManager
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public AuthToken Generate(User user)
         {
             List<Claim> claims = new List<Claim>() {
@@ -37,5 +43,6 @@ namespace CMS.JWT.TokenServices
                 ExpiresIn = TokenConstants.ExpiryInMinutes
             };
         }
+
     }
 }

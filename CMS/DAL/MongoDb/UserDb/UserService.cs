@@ -1,5 +1,6 @@
 ﻿using CMS.DAL.MongoDb;
 using CMS.Models.User;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System.Collections.Generic;
@@ -40,9 +41,9 @@ namespace CMS.Database.UserDb
         public async Task<UserMain> GetAsync(string id) =>
             await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public  Task<User> GetMail(string email) { 
-            return _userCollection.Find(x => x.EmailAddress == email).FirstOrDefaultAsync();
-            }
+        public async Task<User> GetMail(string email) =>
+            await _userCollection.Find(x => x.EmailAddress == email).FirstOrDefaultAsync();
+            
         public async Task CreateAsync(User newUser) =>
             await _userCollection.InsertOneAsync(newUser);
 

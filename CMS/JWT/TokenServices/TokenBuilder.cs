@@ -15,7 +15,11 @@ namespace CMS.JWT.TokenServices
         private SigningCredentials _credentials;
         private SymmetricSecurityKey _key;
         private List<Claim> _claims;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="claims"></param>
+        /// <returns></returns>
         public TokenBuilder AddClaims(List<Claim> claims)
         {
             if (_claims == null)

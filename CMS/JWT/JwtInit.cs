@@ -12,6 +12,11 @@ namespace CMS.JWT
    
     public static class JwtInit
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection RegisterJwtServices(this IServiceCollection services)
         {
             services.AddSingleton<IAuthRepository, AuthRepository>();

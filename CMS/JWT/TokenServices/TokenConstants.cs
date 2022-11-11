@@ -1,5 +1,8 @@
 ﻿namespace CMS.JWT.TokenServices
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TokenConstants
     {
         public const string Issuer = "thisismeyouknow";
