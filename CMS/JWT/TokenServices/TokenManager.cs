@@ -12,10 +12,11 @@ namespace CMS.JWT.TokenServices
     public class TokenManager : ITokenManager
     {
         /// <summary>
-        /// 
+        ///  Object of type TokenBuilder which is then chained in series of 
+        ///  methods which add Audience, Issuer, Expiry, Key and Claims to the token
         /// </summary>
         /// <param name="user"></param>
-        /// <returns></returns>
+        /// <returns>AuthToken</returns>
         public AuthToken Generate(User user)
         {
             List<Claim> claims = new List<Claim>() {
@@ -26,6 +27,7 @@ namespace CMS.JWT.TokenServices
                 new Claim (ClaimTypes.Role, user.Role),
                  new Claim (ClaimTypes.Email, user.EmailAddress)
             };
+            
 
             JwtSecurityToken token = new TokenBuilder()
             .AddAudience(TokenConstants.Audience)
@@ -34,6 +36,12 @@ namespace CMS.JWT.TokenServices
             .AddKey(TokenConstants.key)
             .AddClaims(claims)
             .Build();
+
+
+            /// <summary>
+            ///  generate the token by creating an instance of JwtSecurityTokenHandler class and invoking
+            ///  WriteToken() method with the created SecurityToken instance.
+            /// </summary>
 
             string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
 

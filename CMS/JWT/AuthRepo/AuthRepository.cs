@@ -21,11 +21,13 @@ namespace CMS.JWT.AuthRepo
         /// 
         /// </summary>
         /// <param name="tokenManager"></param>
-        public AuthRepository(ITokenManager tokenManager)
+        public AuthRepository(ITokenManager tokenManager, UserService userService)
         {
             _tokenManager = tokenManager;
+            _userService = userService;
 
         }
+      
         /// <summary>
         /// 
         /// </summary>
@@ -37,7 +39,7 @@ namespace CMS.JWT.AuthRepo
         {
           // var user = UserData.Users.FirstOrDefault(x => x.EmailAddress == credentials.Email);
             //uisng dbinit
-           var user1 = _userService.GetMail(credentials.Email);
+           var user1 = _userService.GetMail(credentials.Email).Result;
           
 
             if (user1 != null)

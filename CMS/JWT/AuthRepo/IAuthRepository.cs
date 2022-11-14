@@ -5,6 +5,7 @@ namespace CMS.JWT.AuthRepo
 {
     public interface IAuthRepository
     {
+       
         AuthResult Authenticate(LoginModel credentials);
     }
 }

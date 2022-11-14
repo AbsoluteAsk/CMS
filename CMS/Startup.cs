@@ -42,8 +42,8 @@ namespace CMS
            // services.AddJwtBearerAuthentication();
             //services.AddRolesAndPolicyAuthorization();
             services.AddControllers();
-            services.Configure<UserDbSettings>(
-                Configuration.GetSection("UserDbSettings"));
+            //services.Configure<UserDbSettings>(
+            //    Configuration.GetSection("UserDbSettings"));
             services.Configure<DatabaseSettings>(
                Configuration.GetSection("CMSDatabaseSettings"));
            // DbInitialization.getInstance().DbConnection();

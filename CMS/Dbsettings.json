@@ -1,0 +1,17 @@
+﻿{
+  "UserDbSettings": {
+    "CollectionName": "Users",
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "UserDatabase"
+  },
+  "CMSDatabaseSettings": {
+    "CSRCollection": "CSRCollection",
+    "ECUCollection": "ECUCOllection",
+    "CertificateCollection": "CertificateCollection",
+    "ConnectionString": "mongodb://localhost:27017",
+    "DatabaseName": "CertificateManagementService",
+    "CollectionName": "Users",
+
+    "UDatabaseName": "UserDatabase"
+  }
+}

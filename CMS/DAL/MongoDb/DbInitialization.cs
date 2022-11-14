@@ -14,7 +14,11 @@ namespace CMS.DAL.MongoDb
     {
         public IMongoCollection<UserReq> _csrCollection;
         public IMongoCollection<User> _userCollection;
-
+        /// <summary>
+        /// Get Connection String and Db name/Collection Name
+        /// Create Connection
+        /// </summary>
+        /// <param name="DbSettings"></param>
         public DbInitialization(IOptions<DatabaseSettings> DbSettings) {
 
             var mongoClient = new MongoClient(

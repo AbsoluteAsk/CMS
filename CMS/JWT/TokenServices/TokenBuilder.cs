@@ -16,9 +16,9 @@ namespace CMS.JWT.TokenServices
         private SymmetricSecurityKey _key;
         private List<Claim> _claims;
         /// <summary>
-        /// 
+        /// This is a custom Utility class which uses method chaining to create an 
+        /// instance of JwtSecurityToken returned when Build() method is called.
         /// </summary>
-        /// <param name="claims"></param>
         /// <returns></returns>
         public TokenBuilder AddClaims(List<Claim> claims)
         {
